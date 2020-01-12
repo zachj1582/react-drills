@@ -4,11 +4,11 @@ class Image extends Component{
     render(){
         return(
             <div>
-                <img src={this.props.url}/>
-                <div>Error 599</div>
+
+            <img id='pic' src={this.props.url}/>
             </div>
         )
     }
 }
 
-export default Image;
+export default Image

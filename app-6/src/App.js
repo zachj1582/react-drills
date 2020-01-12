@@ -1,51 +1,33 @@
 import React, {Component} from 'react';
-import logo from './logo.svg';
 import './App.css';
-import ToDo from './Todo'
+import Todo from './Todo'
 
 class App extends Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props)
     this.state = {
+      list: [],
       userInput: '',
-      list: []
     }
-    this.handleClick=this.handleClick.bind(this)
   }
-
-  handleChange(val){
-    this.setState({userInput: val})
+  handleInput = ({name, value})=> {
+    this.setState({[name]: value})
   }
-
-  handleClick(){
+  handleClick= () => {
     this.setState({
-      list: [...this.state.list, this.state.userInput], 
-      userInput: ""
+      list: [...this.state.list, this.state.userInput], userInput: ''
     })
   }
-
   render(){
-    let list = this.state.list.map((element, index) => {
-      return <ToDo key={index} task={element}/>;
-    });
-
-    return (
-      <div className="App">
-      <h4>My to-do list:</h4>
-
-      <div>
-       <input 
-       value={this.state.input} 
-       placeholder='Enter new task' 
-       onChange={e => this.handleChange(e.target.value)} />
-       <button onClick={this.handleClick} >Add</button>
+    return(
+      <div className='App'>
+        <Todo handleInput={this.handleInput}
+              handleClick={this.handleClick}
+              list={this.state.list}
+              userInput={this.state.userInput}/>
       </div>
-
-      <br />
-      {list}
-    </div>
-  );
+    )
   }
 }
 
-export default App;
+export default App
