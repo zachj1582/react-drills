@@ -1,13 +1,12 @@
 import React, {Component} from 'react'
-import Todo from './Todo'
 
 class List extends Component{
     render(){
-        let list = this.props.tasks.map((e,i)=>{
-            return <Todo key={i} task={e}/>
+        let list = this.props.list.map((e,i)=> {
+        return <h1 key={i}>{e}</h1>
         })
         return(
-            <div>{list}</div>
+        <div>{list}</div>
         )
     }
 }
